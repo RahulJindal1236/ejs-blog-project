@@ -45,7 +45,10 @@ app.post('/compose', (req, res) => {
 })
 
 app.get('/posts/:postName', (req, res) => {
-  console.log(req.params.postName)
+  const requestedTitle = req.body.postName
+  posts.forEach((item) => {
+    if (item.title === requestedTitle) console.log(item)
+  })
 })
 
 app.listen(port, function () {
