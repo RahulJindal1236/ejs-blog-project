@@ -21,6 +21,14 @@ app.get('/', (req, res) => {
   res.render('home', { homeContent: homeStartingContent })
 })
 
+app.get('/about', (req, res) => {
+  res.render('about', { aboutC: aboutContent })
+})
+
+app.get('/contact', (req, res) => {
+  res.render('contact', { contactC: contactContent })
+})
+
 app.listen(port, function () {
   console.log(`Server started on port ${port}`)
 })
