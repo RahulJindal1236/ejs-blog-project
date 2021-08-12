@@ -34,8 +34,13 @@ app.get('/compose', (req, res) => {
 })
 
 app.post('/compose', (req, res) => {
-  console.log(req.body.postTitle)
-  console.log(req.body.postContent)
+  // console.log(req.body.postTitle)
+  // console.log(req.body.postContent)
+  const post = {
+    title: req.body.postTitle,
+    content: req.body.postContent,
+  }
+  console.log(post)
 })
 
 app.listen(port, function () {
