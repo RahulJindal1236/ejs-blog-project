@@ -44,6 +44,10 @@ app.post('/compose', (req, res) => {
   res.redirect('/')
 })
 
+app.get('/posts/:postName', (req, res) => {
+  console.log(req.params.postName)
+})
+
 app.listen(port, function () {
   console.log(`Server started on port ${port}`)
 })
