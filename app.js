@@ -10,6 +10,8 @@ const aboutContent =
 const contactContent =
   'Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.'
 
+var posts = []
+
 const app = express()
 const port = process.env.PORT || 5000
 app.set('view engine', 'ejs')
@@ -19,6 +21,7 @@ app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   res.render('home', { homeContent: homeStartingContent })
+  console.log(posts)
 })
 
 app.get('/about', (req, res) => {
@@ -34,13 +37,12 @@ app.get('/compose', (req, res) => {
 })
 
 app.post('/compose', (req, res) => {
-  // console.log(req.body.postTitle)
-  // console.log(req.body.postContent)
   const post = {
     title: req.body.postTitle,
     content: req.body.postContent,
   }
-  console.log(post)
+  posts.push(post)
+  res.redirect('/')
 })
 
 app.listen(port, function () {
